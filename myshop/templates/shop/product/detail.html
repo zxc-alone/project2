@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <p>Цена: {{ product.price }} руб.</p>
+    {% if product.image %}
+        <img src="{{ product.image.url }}" width="300">
+    {% endif %}
+    <p>{{ product.description }}</p>
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="Добавить в корзину">
+    </form>
+    <a href="{% url 'shop:product_list' %}">Назад</a>
+{% endblock %}
