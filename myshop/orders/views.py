@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import OrderCreateForm
 from cart.cart import Cart
+# orders/views.py
+from .models import Order, OrderItem
 
 def order_create(request):
     cart = Cart(request)
